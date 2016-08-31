@@ -1,0 +1,6 @@
+exportPattern("^[[:alpha:]]+")
+import(formatR)
+import(miniUI)
+import(rstudioapi)
+import(shiny)
+import(githubinstall)

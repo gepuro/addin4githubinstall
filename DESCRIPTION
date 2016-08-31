@@ -1,0 +1,21 @@
+Package: addin4githubinstall
+Title: Githubinstall addin
+Version: 0.1.0
+Authors@R: c(
+    person("Atsushi", "Hayakawa", email = "gepuro@gmail.com", role = c("aut", "cre")),
+    person("Koji", "Makiyama", email = "hoxo.smile@gmail.com", role = c("ctb")),
+    person("Shinya", "Uryu", role = "ctb"),
+    person("Hiroaki", "Yutani", role = "ctb"),
+    person("Nagi", "Teramo", role = "ctr"))
+Description: Provides search function for R packages in github with githubinstall packages
+Depends:
+    R (>= 3.0.0)
+Imports:
+    shiny (>= 0.13),
+    miniUI (>= 0.1.1),
+    rstudioapi (>= 0.4),
+    githubinstall,
+    formatR
+License: MIT + file LICENSE
+LazyData: true
+RoxygenNote: 5.0.1

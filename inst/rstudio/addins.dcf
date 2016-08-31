@@ -1,0 +1,4 @@
+Name: githubinstall
+Description: Search R packages
+Binding: SearchGithubInstallPackages
+Interactive: true

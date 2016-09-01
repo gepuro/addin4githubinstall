@@ -18,7 +18,7 @@ SearchGithubInstallPackages <- function() {
         textInput("keyword", "Key Word")
       ),
       uiOutput("pending"),
-      dataTableOutput("output")
+      DT::dataTableOutput('output')
     )
   )
 
@@ -62,10 +62,16 @@ SearchGithubInstallPackages <- function() {
         return(NULL)
       data
     })
-
+    observeEvent(input$output_cell_clicked, {
+      info <- input$output_cell_clicked
+      if(length(info)!=0){
+        githubinstall::githubinstall(info$value,
+                                     ask = FALSE)
+      }
+    })
+    
     # Listen for 'done'.
     observeEvent(input$done, {
-
       # Emit a subset call if a dataset has been specified.
       if (nzchar(input$keyword)) {
         code <- paste("keyword(", input$keyword, ")", sep = "")
@@ -74,6 +80,7 @@ SearchGithubInstallPackages <- function() {
 
       invisible(stopApp())
     })
+
   }
 
   # Use a modal dialog as a viewr.

@@ -62,29 +62,24 @@ SearchGithubInstallPackages <- function() {
         return(NULL)
       data
     })
-    observeEvent(input$output_cell_clicked, {
-      info <- input$output_cell_clicked
-      if(length(info)!=0){
-        githubinstall::githubinstall(info$value,
-                                     ask = FALSE)
-      }
-    })
-    
+
     # Listen for 'done'.
     observeEvent(input$done, {
-      # Emit a subset call if a dataset has been specified.
-      if (nzchar(input$keyword)) {
-        code <- paste("keyword(", input$keyword, ")", sep = "")
-        rstudioapi::insertText(text = code)
+      info <- input$output_cell_clicked
+      if(length(info) != 0){
+        pkg_info <- reactiveData()[info$col,]
+        pkg_name <- paste0(pkg_info[1], "/", pkg_info[2])
+        devtools::install_github(pkg_name,
+                                 ask = FALSE)
       }
-
+      
       invisible(stopApp())
     })
 
   }
 
   # Use a modal dialog as a viewr.
-  viewer <- dialogViewer("Subset", width = 1000, height = 800)
+  viewer <- dialogViewer("GithubInstall", width = 1000, height = 800)
   runGadget(ui, server, viewer = viewer)
 
 }

@@ -16,7 +16,7 @@ SearchGithubInstallPackages <- function() {
                    right = miniTitleBarButton("done", "Install", primary = TRUE)),
     miniContentPanel(
       stableColumnLayout(
-        textInput("keyword", "Key Word")
+        textInput("keyword", "Search in Title")
       ),
       uiOutput("pending"),
       DT::dataTableOutput('output')
